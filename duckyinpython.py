@@ -13,6 +13,7 @@ import pwmio
 import asyncio
 import usb_hid
 from adafruit_hid.keyboard import Keyboard
+from adafruit_hid.mouse import Mouse
 
 # comment out these lines for non_US keyboards
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS as KeyboardLayout
@@ -22,6 +23,8 @@ from adafruit_hid.keycode import Keycode
 # replace LANG with appropriate language
 #from keyboard_layout_win_LANG import KeyboardLayout
 #from keycode_win_LANG import Keycode
+
+mouse = Mouse(usb_hid.devices)
 
 duckyCommands = {
     'WINDOWS': Keycode.WINDOWS, 'GUI': Keycode.GUI,
@@ -156,6 +159,20 @@ def parseLine(line, script_lines):
                 updated_lines.append(func_line)
             elif not (func_line.startswith("END_WHILE") or func_line.startswith("WHILE")):
                 parseLine(func_line, iter(functions[line]))
+    elif '₪' in line:
+        mouse_coords = line.split('₪') # TODO: add format in docs. format = [stuff₪x,y₪stuff]
+        for segment in mouse_coords:
+            if ',' in segment:
+                pass
+            else:
+                mouse_coords.remove(segment)
+        for coord in mouse_coords:
+            coords = coord.split(',')
+            x = coords[0]
+            y = coords[1]
+            mouse.move(x=-10000,y=-10000) # TODO: put this cursor reset into seperate function
+            mouse.move(x,y) 
+       
     else:
         newScriptLine = convertLine(line)
         runScriptLine(newScriptLine)
