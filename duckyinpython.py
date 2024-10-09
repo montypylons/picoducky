@@ -53,9 +53,9 @@ duckyCommands = {
 
 variables = {}
 functions = {}
-def mousemove(mouseobject, x, y): # TODO: add docs on how this resets cursor pos to ensure absolute input works
+def mousemove(mouseobject, x, y): # TODO: add docs on how this resets cursor position to ensure absolute input works
     mouseobject.move(-99999, -99999)
-    mouseobject.move(x, y)
+    mouseobject.move(int(x), int(y)) # rectifies types, since input is typically string
 
 def convertLine(line):
     newline = []
