@@ -1,4 +1,4 @@
-<h1 align="center">pico-ducky</h1>
+<h1 align="center">pico-ducky(with mouse control added)</h1>
 
 <div align="center">
   <strong>Make a cheap but powerful USB Rubber Ducky with a Raspberry Pi Pico</strong>
@@ -23,7 +23,7 @@ Install and have your USB Rubber Ducky working in less than 5 minutes.
 
 2. Plug the device into a USB port while holding the boot button. It will show up as a removable media device named RPI-RP2.
 
-3. Install CircutlPython on the Pico or Pico W
+3. Install CircutPython on the Pico or Pico W
 
 If using a Pico board:
 
