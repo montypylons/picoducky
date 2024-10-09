@@ -53,6 +53,9 @@ duckyCommands = {
 
 variables = {}
 functions = {}
+def mousemove(mouseobject, x, y): # TODO: add docs on how this resets cursor pos to ensure absolute input works
+    mouseobject.move(-99999, -99999)
+    mouseobject.move(x, y)
 
 def convertLine(line):
     newline = []
@@ -97,6 +100,9 @@ def parseLine(line, script_lines):
         print("[SCRIPT]: " + line[6:])
     elif(line[0:6] == "IMPORT"):
         runScript(line[7:])
+    elif(line[0:9] == "MOVEMOUSE"):
+        line = line.split()
+        mousemove(mouse, line[1], line[2])
     elif(line[0:13] == "DEFAULT_DELAY"):
         defaultDelay = int(line[14:]) * 10
     elif(line[0:12] == "DEFAULTDELAY"):
@@ -159,19 +165,6 @@ def parseLine(line, script_lines):
                 updated_lines.append(func_line)
             elif not (func_line.startswith("END_WHILE") or func_line.startswith("WHILE")):
                 parseLine(func_line, iter(functions[line]))
-    elif '₪' in line:
-        mouse_coords = line.split('₪') # TODO: add format in docs. format = [stuff₪x,y₪stuff]
-        for segment in mouse_coords:
-            if ',' in segment:
-                pass
-            else:
-                mouse_coords.remove(segment)
-        for coord in mouse_coords:
-            coords = coord.split(',')
-            x = coords[0]
-            y = coords[1]
-            mouse.move(x=-10000,y=-10000) # TODO: put this cursor reset into seperate function
-            mouse.move(x,y) 
        
     else:
         newScriptLine = convertLine(line)
