@@ -21,38 +21,89 @@ from adafruit_hid.keycode import Keycode
 
 # uncomment these lines for non_US keyboards
 # replace LANG with appropriate language
-#from keyboard_layout_win_LANG import KeyboardLayout
-#from keycode_win_LANG import Keycode
+# from keyboard_layout_win_LANG import KeyboardLayout
+# from keycode_win_LANG import Keycode
 
 mouse = Mouse(usb_hid.devices)
 
 duckyCommands = {
-    'WINDOWS': Keycode.WINDOWS, 'GUI': Keycode.GUI,
-    'APP': Keycode.APPLICATION, 'MENU': Keycode.APPLICATION, 'SHIFT': Keycode.SHIFT,
-    'ALT': Keycode.ALT, 'CONTROL': Keycode.CONTROL, 'CTRL': Keycode.CONTROL,
-    'DOWNARROW': Keycode.DOWN_ARROW, 'DOWN': Keycode.DOWN_ARROW, 'LEFTARROW': Keycode.LEFT_ARROW,
-    'LEFT': Keycode.LEFT_ARROW, 'RIGHTARROW': Keycode.RIGHT_ARROW, 'RIGHT': Keycode.RIGHT_ARROW,
-    'UPARROW': Keycode.UP_ARROW, 'UP': Keycode.UP_ARROW, 'BREAK': Keycode.PAUSE,
-    'PAUSE': Keycode.PAUSE, 'CAPSLOCK': Keycode.CAPS_LOCK, 'DELETE': Keycode.DELETE,
-    'END': Keycode.END, 'ESC': Keycode.ESCAPE, 'ESCAPE': Keycode.ESCAPE, 'HOME': Keycode.HOME,
-    'INSERT': Keycode.INSERT, 'NUMLOCK': Keycode.KEYPAD_NUMLOCK, 'PAGEUP': Keycode.PAGE_UP,
-    'PAGEDOWN': Keycode.PAGE_DOWN, 'PRINTSCREEN': Keycode.PRINT_SCREEN, 'ENTER': Keycode.ENTER,
-    'SCROLLLOCK': Keycode.SCROLL_LOCK, 'SPACE': Keycode.SPACE, 'TAB': Keycode.TAB,
-    'BACKSPACE': Keycode.BACKSPACE,
-    'A': Keycode.A, 'B': Keycode.B, 'C': Keycode.C, 'D': Keycode.D, 'E': Keycode.E,
-    'F': Keycode.F, 'G': Keycode.G, 'H': Keycode.H, 'I': Keycode.I, 'J': Keycode.J,
-    'K': Keycode.K, 'L': Keycode.L, 'M': Keycode.M, 'N': Keycode.N, 'O': Keycode.O,
-    'P': Keycode.P, 'Q': Keycode.Q, 'R': Keycode.R, 'S': Keycode.S, 'T': Keycode.T,
-    'U': Keycode.U, 'V': Keycode.V, 'W': Keycode.W, 'X': Keycode.X, 'Y': Keycode.Y,
-    'Z': Keycode.Z, 'F1': Keycode.F1, 'F2': Keycode.F2, 'F3': Keycode.F3,
-    'F4': Keycode.F4, 'F5': Keycode.F5, 'F6': Keycode.F6, 'F7': Keycode.F7,
-    'F8': Keycode.F8, 'F9': Keycode.F9, 'F10': Keycode.F10, 'F11': Keycode.F11,
-    'F12': Keycode.F12,
-
+    "WINDOWS": Keycode.WINDOWS,
+    "GUI": Keycode.GUI,
+    "APP": Keycode.APPLICATION,
+    "MENU": Keycode.APPLICATION,
+    "SHIFT": Keycode.SHIFT,
+    "ALT": Keycode.ALT,
+    "CONTROL": Keycode.CONTROL,
+    "CTRL": Keycode.CONTROL,
+    "DOWNARROW": Keycode.DOWN_ARROW,
+    "DOWN": Keycode.DOWN_ARROW,
+    "LEFTARROW": Keycode.LEFT_ARROW,
+    "LEFT": Keycode.LEFT_ARROW,
+    "RIGHTARROW": Keycode.RIGHT_ARROW,
+    "RIGHT": Keycode.RIGHT_ARROW,
+    "UPARROW": Keycode.UP_ARROW,
+    "UP": Keycode.UP_ARROW,
+    "BREAK": Keycode.PAUSE,
+    "PAUSE": Keycode.PAUSE,
+    "CAPSLOCK": Keycode.CAPS_LOCK,
+    "DELETE": Keycode.DELETE,
+    "END": Keycode.END,
+    "ESC": Keycode.ESCAPE,
+    "ESCAPE": Keycode.ESCAPE,
+    "HOME": Keycode.HOME,
+    "INSERT": Keycode.INSERT,
+    "NUMLOCK": Keycode.KEYPAD_NUMLOCK,
+    "PAGEUP": Keycode.PAGE_UP,
+    "PAGEDOWN": Keycode.PAGE_DOWN,
+    "PRINTSCREEN": Keycode.PRINT_SCREEN,
+    "ENTER": Keycode.ENTER,
+    "SCROLLLOCK": Keycode.SCROLL_LOCK,
+    "SPACE": Keycode.SPACE,
+    "TAB": Keycode.TAB,
+    "BACKSPACE": Keycode.BACKSPACE,
+    "A": Keycode.A,
+    "B": Keycode.B,
+    "C": Keycode.C,
+    "D": Keycode.D,
+    "E": Keycode.E,
+    "F": Keycode.F,
+    "G": Keycode.G,
+    "H": Keycode.H,
+    "I": Keycode.I,
+    "J": Keycode.J,
+    "K": Keycode.K,
+    "L": Keycode.L,
+    "M": Keycode.M,
+    "N": Keycode.N,
+    "O": Keycode.O,
+    "P": Keycode.P,
+    "Q": Keycode.Q,
+    "R": Keycode.R,
+    "S": Keycode.S,
+    "T": Keycode.T,
+    "U": Keycode.U,
+    "V": Keycode.V,
+    "W": Keycode.W,
+    "X": Keycode.X,
+    "Y": Keycode.Y,
+    "Z": Keycode.Z,
+    "F1": Keycode.F1,
+    "F2": Keycode.F2,
+    "F3": Keycode.F3,
+    "F4": Keycode.F4,
+    "F5": Keycode.F5,
+    "F6": Keycode.F6,
+    "F7": Keycode.F7,
+    "F8": Keycode.F8,
+    "F9": Keycode.F9,
+    "F10": Keycode.F10,
+    "F11": Keycode.F11,
+    "F12": Keycode.F12,
 }
 
 variables = {}
 functions = {}
+
 
 def convertLine(line):
     newline = []
@@ -74,39 +125,43 @@ def convertLine(line):
     # print(newline)
     return newline
 
+
 def runScriptLine(line):
     if isinstance(line, str):
         line = convertLine(line)
     for k in line:
         kbd.press(k)
     kbd.release_all()
+
+
 def sendString(line):
     layout.write(line)
+
 
 def parseLine(line, script_lines):
     global defaultDelay, variables, functions
     line = line.strip()
-    if(line[0:3] == "REM"):
+    if line[0:3] == "REM":
         # ignore ducky script comments
         pass
-    elif(line[0:5] == "DELAY"):
-        time.sleep(float(line[6:])/1000)
-    elif(line[0:6] == "STRING"):
+    elif line[0:5] == "DELAY":
+        time.sleep(float(line[6:]) / 1000)
+    elif line[0:6] == "STRING":
         sendString(line[7:])
-    elif(line[0:5] == "PRINT"):
+    elif line[0:5] == "PRINT":
         print("[SCRIPT]: " + line[6:])
-    elif(line[0:6] == "IMPORT"):
+    elif line[0:6] == "IMPORT":
         runScript(line[7:])
-    elif(line[0:13] == "DEFAULT_DELAY"):
+    elif line[0:13] == "DEFAULT_DELAY":
         defaultDelay = int(line[14:]) * 10
-    elif(line[0:12] == "DEFAULTDELAY"):
+    elif line[0:12] == "DEFAULTDELAY":
         defaultDelay = int(line[13:]) * 10
-    elif(line[0:3] == "LED"):
-        if(led.value == True):
+    elif line[0:3] == "LED":
+        if led.value == True:
             led.value = False
         else:
             led.value = True
-    elif(line[0:21] == "WAIT_FOR_BUTTON_PRESS"):
+    elif line[0:21] == "WAIT_FOR_BUTTON_PRESS":
         button_pressed = False
         # NOTE: we don't use assincio in this case because we want to block code execution
         while not button_pressed:
@@ -116,7 +171,7 @@ def parseLine(line, script_lines):
             button1Released = button1.rose
             button1Held = not button1.value
 
-            if(button1Pushed):
+            if button1Pushed:
                 print("Button 1 pushed")
                 button_pressed = True
     elif line.startswith("VAR"):
@@ -130,7 +185,7 @@ def parseLine(line, script_lines):
             functions[func_name].append(line)
             line = next(script_lines).strip()
     elif line.startswith("WHILE"):
-        condition = re.search(r'\((.*?)\)', line).group(1)
+        condition = re.search(r"\((.*?)\)", line).group(1)
         var_name, _, condition_value = condition.split()
         condition_value = int(condition_value)
         loop_code = []
@@ -157,38 +212,43 @@ def parseLine(line, script_lines):
                 updated_lines = []  # Clear updated_lines after parsing
             elif inside_while_block:
                 updated_lines.append(func_line)
-            elif not (func_line.startswith("END_WHILE") or func_line.startswith("WHILE")):
+            elif not (
+                func_line.startswith("END_WHILE") or func_line.startswith("WHILE")
+            ):
                 parseLine(func_line, iter(functions[line]))
-    elif '₪' in line:
-        mouse_coords = line.split('₪') # TODO: add format in docs. format = [stuff₪x,y₪stuff]
+    elif "₪" in line:
+        mouse_coords = line.split(
+            "₪"
+        )  # TODO: add format in docs. format = [stuff₪x,y₪stuff]
         for segment in mouse_coords:
-            if ',' in segment:
+            if "," in segment:
                 pass
             else:
                 mouse_coords.remove(segment)
         for coord in mouse_coords:
-            coords = coord.split(',')
+            coords = coord.split(",")
             x = coords[0]
             y = coords[1]
-            mouse.move(x=-10000,y=-10000) # TODO: put this cursor reset into seperate function
-            mouse.move(x,y) 
-       
+            mouse.move(
+                x=-10000, y=-10000
+            )  # TODO: put this cursor reset into seperate function
+            mouse.move(x, y)
+
     else:
         newScriptLine = convertLine(line)
         runScriptLine(newScriptLine)
+
 
 kbd = Keyboard(usb_hid.devices)
 layout = KeyboardLayout(kbd)
 
 
+# init button
+button1_pin = DigitalInOut(GP22)  # defaults to input
+button1_pin.pull = Pull.UP  # turn on internal pull-up resistor
+button1 = Debouncer(button1_pin)
 
-
-#init button
-button1_pin = DigitalInOut(GP22) # defaults to input
-button1_pin.pull = Pull.UP      # turn on internal pull-up resistor
-button1 =  Debouncer(button1_pin)
-
-#init payload selection switch
+# init payload selection switch
 payload1Pin = digitalio.DigitalInOut(GP4)
 payload1Pin.switch_to_input(pull=digitalio.Pull.UP)
 payload2Pin = digitalio.DigitalInOut(GP5)
@@ -198,31 +258,33 @@ payload3Pin.switch_to_input(pull=digitalio.Pull.UP)
 payload4Pin = digitalio.DigitalInOut(GP11)
 payload4Pin.switch_to_input(pull=digitalio.Pull.UP)
 
+
 def getProgrammingStatus():
     # check GP0 for setup mode
     # see setup mode for instructions
     progStatusPin = digitalio.DigitalInOut(GP0)
     progStatusPin.switch_to_input(pull=digitalio.Pull.UP)
     progStatus = not progStatusPin.value
-    return(progStatus)
+    return progStatus
 
 
 defaultDelay = 0
+
 
 def runScript(file):
     global defaultDelay
 
     duckyScriptPath = file
     try:
-        with open(duckyScriptPath, "r", encoding='utf-8') as f:
+        with open(duckyScriptPath, "r", encoding="utf-8") as f:
             script_lines = iter(f.readlines())
             previousLine = ""
             for line in script_lines:
                 print(f"runScript: {line}")
-                
-                if(line[0:6] == "REPEAT"):
+
+                if line[0:6] == "REPEAT":
                     for i in range(int(line[7:])):
-                        #repeat the last command
+                        # repeat the last command
                         parseLine(previousLine, script_lines)
                         time.sleep(float(defaultDelay) / 1000)
                 else:
@@ -231,7 +293,8 @@ def runScript(file):
                 time.sleep(float(defaultDelay) / 1000)
     except OSError as e:
         print("Unable to open file", file)
-        
+
+
 def selectPayload():
     global payload1Pin, payload2Pin, payload3Pin, payload4Pin
     payload = "payload.dd"
@@ -245,16 +308,16 @@ def selectPayload():
     payload3State = not payload3Pin.value
     payload4State = not payload4Pin.value
 
-    if(payload1State == True):
+    if payload1State == True:
         payload = "payload.dd"
 
-    elif(payload2State == True):
+    elif payload2State == True:
         payload = "payload2.dd"
 
-    elif(payload3State == True):
+    elif payload3State == True:
         payload = "payload3.dd"
 
-    elif(payload4State == True):
+    elif payload4State == True:
         payload = "payload4.dd"
 
     else:
@@ -264,20 +327,22 @@ def selectPayload():
 
     return payload
 
+
 async def blink_led(led):
     print("Blink")
-    if(board.board_id == 'raspberry_pi_pico'):
+    if board.board_id == "raspberry_pi_pico":
         blink_pico_led(led)
-    elif(board.board_id == 'raspberry_pi_pico_w'):
+    elif board.board_id == "raspberry_pi_pico_w":
         blink_pico_w_led(led)
+
 
 async def blink_pico_led(led):
     print("starting blink_pico_led")
     led_state = False
     while True:
         if led_state:
-            #led_pwm_up(led)
-            #print("led up")
+            # led_pwm_up(led)
+            # print("led up")
             for i in range(100):
                 # PWM LED up and down
                 if i < 50:
@@ -285,8 +350,8 @@ async def blink_pico_led(led):
                 await asyncio.sleep(0.01)
             led_state = False
         else:
-            #led_pwm_down(led)
-            #print("led down")
+            # led_pwm_down(led)
+            # print("led down")
             for i in range(100):
                 # PWM LED up and down
                 if i >= 50:
@@ -295,24 +360,26 @@ async def blink_pico_led(led):
             led_state = True
         await asyncio.sleep(0)
 
+
 async def blink_pico_w_led(led):
     print("starting blink_pico_w_led")
     led_state = False
     while True:
         if led_state:
-            #print("led on")
+            # print("led on")
             led.value = 1
             await asyncio.sleep(0.5)
             led_state = False
         else:
-            #print("led off")
+            # print("led off")
             led.value = 0
             await asyncio.sleep(0.5)
             led_state = True
         await asyncio.sleep(0.5)
 
+
 async def monitor_buttons(button1):
-    global inBlinkeyMode, inMenu, enableRandomBeep, enableSirenMode,pixel
+    global inBlinkeyMode, inMenu, enableRandomBeep, enableSirenMode, pixel
     print("starting monitor_buttons")
     button1Down = False
     while True:
@@ -322,16 +389,16 @@ async def monitor_buttons(button1):
         button1Released = button1.rose
         button1Held = not button1.value
 
-        if(button1Pushed):
+        if button1Pushed:
             print("Button 1 pushed")
             button1Down = True
-        if(button1Released):
+        if button1Released:
             print("Button 1 released")
-            if(button1Down):
+            if button1Down:
                 print("push and released")
 
-        if(button1Released):
-            if(button1Down):
+        if button1Released:
+            if button1Down:
                 # Run selected payload
                 payload = selectPayload()
                 print("Running ", payload)
